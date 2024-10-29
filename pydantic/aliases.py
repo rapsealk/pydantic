@@ -63,10 +63,10 @@ class AliasChoices:
         choices: A list containing a string or `AliasPath`.
     """
 
-    choices: list[str | AliasPath]
+    choices: tuple[str | AliasPath, ...]
 
-    def __init__(self, first_choice: str | AliasPath, *choices: str | AliasPath) -> None:
-        self.choices = [first_choice] + list(choices)
+    def __init__(self, *choices: str | AliasPath) -> None:
+        self.choices = tuple(choices)
 
     def convert_to_aliases(self) -> list[list[str | int]]:
         """Converts arguments to a list of lists containing string or integer aliases.
